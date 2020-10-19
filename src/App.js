@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ListAlbums from "./pages/ListAlbums/ListAlbums";
+import ListSongs from "./pages/ListSongs/ListSongs";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+      <div className="main-wrapper">
+        <header className="header-container">
+            <h1 className="main-header-title"><Link to="/">Music app</Link></h1>
+        </header>
+        <Switch>
+          <Route path="/" exact component={ListAlbums} />
+          <Route path="/album/:id" exact component={ListSongs} />
+        </Switch>
+        <footer className="footer-container">©2020</footer>
+      </div>
+      </Router>
   );
 }
 
